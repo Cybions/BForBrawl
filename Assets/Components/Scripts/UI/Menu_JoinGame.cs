@@ -19,6 +19,8 @@ public class Menu_JoinGame : MonoBehaviour
     private TextMeshProUGUI ConnectionInfos;
 
     private Tweener tweener;
+    [SerializeField]
+    BFB_NetworkManager NetManager;
 
     private void Start()
     {
@@ -46,5 +48,7 @@ public class Menu_JoinGame : MonoBehaviour
         ConnectionBTN.gameObject.SetActive(false);
         ConnectionInfos.text = "Connection en cours..";
         loadingAnimation.Animate();
+        NetManager.ConnectToServer(ipAdresseField.text);
+        
     }
 }

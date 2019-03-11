@@ -891,12 +891,12 @@ MonoBehaviour:
   m_ScriptCRCCheck: 1
   m_MaxDelay: 0.01
   m_LogLevel: 2
-  m_PlayerPrefab: {fileID: 3525100096858065906, guid: 25ac01b1befaa1f4cb62b731a2c30468,
+  m_PlayerPrefab: {fileID: 2320002017242824581, guid: 25ac01b1befaa1f4cb62b731a2c30468,
     type: 3}
   m_AutoCreatePlayer: 1
   m_PlayerSpawnMethod: 0
-  m_OfflineScene: 
-  m_OnlineScene: 
+  m_OfflineScene: 01_GameMenu
+  m_OnlineScene: 00_Moon
   m_SpawnPrefabs: []
   m_CustomConfig: 0
   m_MaxConnections: 4
@@ -1971,6 +1971,7 @@ MonoBehaviour:
   ipAdresseField: {fileID: 1327299297}
   ConnectionBTN: {fileID: 1201201024}
   ConnectionInfos: {fileID: 1263145769}
+  NetManager: {fileID: 525392668}
 --- !u!114 &938464132
 MonoBehaviour:
   m_ObjectHideFlags: 0
