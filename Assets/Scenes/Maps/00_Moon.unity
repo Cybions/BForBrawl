@@ -11977,7 +11977,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh4314
+  m_Name: pb_Mesh15310
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -37675,7 +37675,7 @@ MonoBehaviour:
   dontDestroyMeshOnDelete: 0
   m_selectedFaces: 
   m_SelectedEdges: []
-  m_selectedTriangles: 00000000
+  m_selectedTriangles: 
 --- !u!114 &1399185146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38553,7 +38553,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1432489514
 AudioListener:
   m_ObjectHideFlags: 0

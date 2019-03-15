@@ -5,6 +5,8 @@ using UnityEngine.Networking;
 
 public class CharacterSystem : NetworkBehaviour
 {
+    public Camera MyCamera;
+
     [SerializeField]
     private CharacterSelection SelectionInterface;
     private CharacterSelection CurrentSelectionInterface;
@@ -17,13 +19,14 @@ public class CharacterSystem : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        MyCamera = GetComponentInChildren<Camera>();
         CurrentSelectionInterface = Instantiate(SelectionInterface, transform);
         CurrentSelectionInterface.Reply_CS = this;
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.H) && CurrentCharacter.CanSwapCharacter)
+        if (Input.GetKeyDown(KeyCode.H) && CurrentCharacter.CanSwapCharacter)
         {
             ToggleCharacterSelection();
         }
@@ -31,13 +34,44 @@ public class CharacterSystem : NetworkBehaviour
 
     public void NewCharacterSelected(Character NewCharacter)
     {
-        if(CurrentCharacter != null)
+        if (CurrentCharacter != null)
         {
-            NetworkServer.Destroy(CurrentCharacter.gameObject);
+            if (GetComponent<NetworkIdentity>().isServer)
+            {
+                NetworkServer.Destroy(CurrentCharacter.gameObject);
+            }
+            else
+            {
+                CmdDestroyPlayer();
+            }
         }
         CurrentCharacter = NetworkIdentity.Instantiate(NewCharacter, transform);
         Destroy(CurrentSelectionInterface.gameObject);
         CanLeaveSelection = true;
+        if (GetComponent<NetworkIdentity>().isServer)
+        {
+            NetworkServer.Spawn(CurrentCharacter.gameObject);
+        }
+        else
+        {
+            CmdSpawnPlayer();
+        }
+
+        if (isLocalPlayer)
+        {
+            CurrentCharacter.AttachCameraToCharacter(GetComponentInChildren<Camera>());
+        }
+    }
+
+    [Command]
+    void CmdDestroyPlayer()
+    {
+        NetworkServer.Destroy(CurrentCharacter.gameObject);
+    }
+
+    [Command]
+    void CmdSpawnPlayer()
+    {
         NetworkServer.Spawn(CurrentCharacter.gameObject);
     }
 
