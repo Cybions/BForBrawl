@@ -28,6 +28,10 @@ public class CameraControler : MonoBehaviour
 
     void Update()
     {
+        if (Cursor.lockState == CursorLockMode.None)
+        {
+            return;
+        }
         if (axes == RotationAxes.MouseXAndY)
         {
             //Resets the average rotation

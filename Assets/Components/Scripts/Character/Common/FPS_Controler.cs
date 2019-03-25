@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class FPS_Controler : MonoBehaviour
 {
-    [SerializeField]
-    private float MoveSpeed = 10;
+    public float MoveSpeed = 10;
     [SerializeField]
     private float JumpForce = 1;
 

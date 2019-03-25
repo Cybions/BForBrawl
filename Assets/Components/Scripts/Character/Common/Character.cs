@@ -8,6 +8,12 @@ public class Character : MonoBehaviour
     //public Camera MyCamera;
 
     [SerializeField]
+    private CharacterStats CurrentStats;
+
+    private float CurrentLife = 1;
+
+
+    [SerializeField]
     Transform CameraSpot;
 
     [SerializeField]
@@ -18,8 +24,23 @@ public class Character : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //GetComponentInChildren<Camera>().depth = 10;
+        //CurrentLife = CurrentStats.MaxLife;
     }
+
+
+    public float GetCurrentLife()
+    {
+        return CurrentLife;
+    }
+
+
+
+
+
+
+
+
+
 
     public void AttachCameraToCharacter(Camera MyCamera)
     {
