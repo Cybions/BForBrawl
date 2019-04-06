@@ -5,10 +5,6 @@ using UnityEngine.Networking;
 
 public class CameraControler : MonoBehaviour
 {
-    [SerializeField]
-    NetworkIdentity PlayerID;
-
-
     public enum RotationAxes { MouseXAndY = 0, MouseX = 1, MouseY = 2 }
     public RotationAxes axes = RotationAxes.MouseXAndY;
     public float sensitivityX = 15F;
@@ -120,17 +116,6 @@ public class CameraControler : MonoBehaviour
     }
     void Start()
     {
-        //PlayerID = GetComponentInParent<NetworkIdentity>();
-        //if (!PlayerID.isLocalPlayer && axes == RotationAxes.MouseY)
-        //{
-        //    if (PlayerID.isServer)
-        //    {
-        //        return;
-        //    }
-        //    this.gameObject.SetActive(false);
-        //    return;
-        //}
-
         Rigidbody rb = GetComponent<Rigidbody>();
         if (rb)
             rb.freezeRotation = true;

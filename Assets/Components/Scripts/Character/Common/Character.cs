@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class Character : MonoBehaviour
+public class Character : NetworkBehaviour
 {
     //public Camera MyCamera;
+
+    [SerializeField]
+    private GameObject Camera;
 
     [SerializeField]
     private CharacterStats CurrentStats;
@@ -25,6 +29,21 @@ public class Character : MonoBehaviour
     void Start()
     {
         //CurrentLife = CurrentStats.MaxLife;
+        if (isLocalPlayer)
+        {
+            Camera.gameObject.SetActive(true);
+            GetComponent<FPS_Controler>().enabled = true;
+            GetComponent<CameraControler>().enabled = true;
+            Invoke("placePlayer", 0);
+        }
+
+        
+    }
+
+    void placePlayer()
+    {
+        transform.parent = null;
+        transform.position = SpawnManager.Instance.transform.position;
     }
 
 

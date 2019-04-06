@@ -7,12 +7,13 @@ public class FPS_Controler : MonoBehaviour
     public float MoveSpeed = 10;
     [SerializeField]
     private float JumpForce = 1;
-
+    float distToGround;
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        distToGround = GetComponent<CapsuleCollider>().bounds.extents.y;
     }
 
     // Update is called once per frame
@@ -52,7 +53,9 @@ public class FPS_Controler : MonoBehaviour
 
     bool CanJump()
     {
-        return Physics.Raycast(transform.position, -Vector3.up, (.5f + 0.1f));
+        bool result = Physics.Raycast(transform.position, -Vector3.up, (distToGround + 0.1f));
+        print(result);
+        return result;
     }
 
 }

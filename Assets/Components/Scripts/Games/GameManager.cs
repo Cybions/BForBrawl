@@ -64,4 +64,9 @@ public class GameManager : MonoBehaviour
         }
         return true;
     }
+
+    public void StartGame()
+    {
+        print("Start Game");
+    }
 }

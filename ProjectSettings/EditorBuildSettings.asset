@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Maps/00_Moon.unity
     guid: 3f8f4530aedab5a439854e2f3ebbb577
+  - enabled: 1
+    path: Assets/Scenes/Maps/02_Weapon_Factory_Earth.unity
+    guid: e25838d35ebc7c5438517681b629f4d1
   m_configObjects: {}

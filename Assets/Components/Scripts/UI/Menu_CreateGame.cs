@@ -12,11 +12,18 @@ public class Menu_CreateGame : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI IPAdress;
     [SerializeField]
+    private TextMeshProUGUI NumberOfPlayers;
+    [SerializeField]
     private Button BTN_StartGame;
 
     private void Start()
     {
         networkManager.OnServerCreated.AddListener(GetIPAdress);
+    }
+
+    private void Update()
+    {
+        NumberOfPlayers.text = networkManager.numPlayers.ToString();
     }
 
     public void ActivateWithDelay_StartGameBTN(float delay=0)
@@ -35,6 +42,11 @@ public class Menu_CreateGame : MonoBehaviour
     void GetIPAdress()
     {
         IPAdress.text = networkManager.matchInfo.address;
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 
 }
